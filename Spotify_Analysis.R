@@ -70,7 +70,14 @@ kurtosis(d80_99$acousticness) # 2.430211
 kurtosis(d00_09$acousticness) # 2.818377
 kurtosis(d10_20$acousticness) # 3.0802
 
+##################################################
 
+# it would be cool have the mean of the variables each year every year plotted with an explanation
+mean_master = aggregate(dataset[, -length(dataset)], list(dataset$year), mean)
+dim(mean_master)
+head(mean_master)
 
-
+for (i in 2:length(mean_master)) {
+  plot(mean_master[, 1], mean_master[, i], type="l", col="blue", lwd=3, xlab="year", ylab=names(mean_master)[i], main=paste("100 yrs of", names(mean_master)[i]))
+}
 
