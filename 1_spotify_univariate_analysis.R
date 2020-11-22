@@ -16,34 +16,32 @@ data$decade <- as.numeric((floor( (data$year) / 10) * 10))
 
 column_names <- dimnames(data)
 
-#Create x different time periods
-time_periods <- list(  c(1921,1940), 
-                       c(1941,1960), 
-                       c(1961,1970), 
+#Create x different time periods with labels
+time_periods <- list(  c(1921,1950), 
+                       c(1951,1970), 
                        c(1971,1980), 
                        c(1981,1990), 
-                       c(1991,2010), 
+                       c(1991,2000), 
+                       c(2001,2010), 
                        c(2011,2020) )
-time_periods_labels <- list( 'Name_1', 'Name_2', 'Name_3', 'Name_4', 'Name_5', 'Name_6', 'Name_7' )
+time_periods_labels <- list( "20s-40s", "50s-60s", "70s", "80s", "90s", "00s", "10s" )
 
-# Extract columns for univariate analysis
-
-univariate_columns_names <- c("acousticness", "energy", "loudness")
+# Select columns for univariate analysis
+univariate_columns_names <- c("acousticness", "danceability", "energy", "liveness", "loudness", "speechiness", "tempo", "valence")
 
 # Compute boxplot, skewness and kurtosis for each column extracted
-
 for (attribute in univariate_columns_names) {
   print(paste("Computing boxplots, skewness and kurtosis for ", attribute))
   bp_list = list()
   sk_list = list()
   ku_list = list()
+  
   # Compute boxplot, skewness and kurtosis for the selected column for each time period
   for (i in 1:length(time_periods)) {
     d <- data[ which(data$year>=time_periods[[i]][1] & data$year <= time_periods[[i]][2]), ]
     bp_list[[i]] = as.grob(~boxplot(d[attribute],
                                     horizontal=FALSE, 
-                                    main=paste('Boxplot ', time_periods_labels[[i]]),
-                                    ylab=attribute, 
+                                    main=paste(time_periods_labels[[i]]),
                                     ylim=c(min(data[attribute]), max(data[attribute]))))
     sk_list[[i]] = skewness(d[attribute])
     ku_list[[i]] = kurtosis(d[attribute])
