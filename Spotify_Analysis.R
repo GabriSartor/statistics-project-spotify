@@ -1,6 +1,10 @@
+# set wd and import dataset
 setwd("~/Documents/statistics-project-spotify/data")
+# info about the dataset:
+# https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/
 raw_data = read.csv('spotify_data.csv')
-dim(raw_data); dimnames(raw_data)
+dim(raw_data) # # 169909 x 19
+dimnames(raw_data)
 str(raw_data); head(raw_data); View(raw_data)
 
 # from duration_ms to duration_s
@@ -19,11 +23,14 @@ names(dataset)
 # - let's find the major shifts in music
 # box plot for different decades but same variables put together
 # cross of skeweness for shifting trends, kurtosis for convegences
+# ... <----------
 # MULTIVARIATE IDEAS:
 # - search for evergreen correlations ()
-# ...
+# ... <----------
 # AT THE END..
-# After that, it would be cool have the mean of the variables each year every year plotted with an explanation
+# - After that, it would be cool have the mean of the variables each year every year plotted with an explanation
+# - max popularity artist
+# - max popularity song
 
 # subsets for decades
 d20_49 = dataset[1920 <= dataset$year & dataset$year < 1950, ]
