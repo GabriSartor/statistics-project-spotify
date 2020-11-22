@@ -16,10 +16,11 @@ names(dataset)
 # Rolling stone wants to make a special number for the last 100 years of music 
 # The magazine will contain some analysis for 5 different decades (20-49, 50-79, 80-99, 00-09, 10-20)
 # UNIVARIATE IDEAS:
+# - let's find the major shifts in music
 # box plot for different decades but same variables put together
 # cross of skeweness for shifting trends, kurtosis for convegences
 # MULTIVARIATE IDEAS:
-# search for evergreen correlations ()
+# - search for evergreen correlations ()
 # ...
 # AT THE END..
 # After that, it would be cool have the mean of the variables each year every year plotted with an explanation
@@ -32,14 +33,22 @@ d00_09 = dataset[2000 <= dataset$year & dataset$year < 2010, ]
 d10_20 = dataset[2010 <= dataset$year & dataset$year < 2021, ]
 
 # acousticness in different decades
-boxplot(d20_49$acousticness,horizontal=FALSE, main='Boxplot d20_49', ylab='acousticness', ylim=c(min(d20_49$acousticness), max(d20_49$acousticness)))
-boxplot(d50_79$acousticness,horizontal=FALSE, main='Boxplot d50_79', ylab='acousticness', ylim=c(min(d50_79$acousticness), max(d50_79$acousticness)))
-boxplot(d80_99$acousticness,horizontal=FALSE, main='Boxplot d80_99', ylab='acousticness', ylim=c(min(d80_99$acousticness), max(d80_99$acousticness)))
-boxplot(d00_09$acousticness,horizontal=FALSE, main='Boxplot d00_09', ylab='acousticness', ylim=c(min(d00_09$acousticness), max(d00_09$acousticness)))
-boxplot(d10_20$acousticness,horizontal=FALSE, main='Boxplot d10_20', ylab='acousticness', ylim=c(min(d10_20$acousticness), max(d10_20$acousticness)))
-
+# install.packages('ggplotify')
+library(ggplotify)
+bp_20 = as.grob(~boxplot(d20_49$acousticness,horizontal=FALSE, main='Boxplot d20_49', ylab='acousticness', ylim=c(min(d20_49$acousticness), max(d20_49$acousticness))))
+bp_50 = as.grob(~boxplot(d50_79$acousticness,horizontal=FALSE, main='Boxplot d50_79', ylab='acousticness', ylim=c(min(d50_79$acousticness), max(d50_79$acousticness))))
+bp_80 = as.grob(~boxplot(d80_99$acousticness,horizontal=FALSE, main='Boxplot d80_99', ylab='acousticness', ylim=c(min(d80_99$acousticness), max(d80_99$acousticness))))
+bp_00 = as.grob(~boxplot(d00_09$acousticness,horizontal=FALSE, main='Boxplot d00_09', ylab='acousticness', ylim=c(min(d00_09$acousticness), max(d00_09$acousticness))))
+bp_10 = as.grob(~boxplot(d10_20$acousticness,horizontal=FALSE, main='Boxplot d10_20', ylab='acousticness', ylim=c(min(d10_20$acousticness), max(d10_20$acousticness))))
+# install.packages('ggpubr')
+library(ggpubr)
+# install.packages('farver')
+library(farver)
+bp_list <- list(bp_20, bp_50, bp_80, bp_00, bp_10)
+ggarrange(plotlist = bp_list, labels = c('20\'s to \'49', '50\'s to \'79', '80\'s to \'99', '00\'s to \'09', '10\'s to \'20'), nrow = 1)
+dev.off()
 # test the shifting with skeweness: confirmed
-install.packages('moments')
+# install.packages('moments')
 library(moments)
 skewness(d20_49$acousticness) # -2.340799
 skewness(d50_79$acousticness) # -0.5802139
@@ -48,9 +57,13 @@ skewness(d00_09$acousticness) # 1.048702
 skewness(d10_20$acousticness) # 1.131833
 
 # test through kurtosis if artists followed the trend!
-kurtosis(d20_49$acousticness)
-kurtosis(d50_79$acousticness)
-kurtosis(d80_99$acousticness)
-kurtosis(d00_09$acousticness)
-kurtosis(d10_20$acousticness)
+kurtosis(d20_49$acousticness) # 7.415011 -> the music was entirely acoustic because of technological reasons
+kurtosis(d50_79$acousticness) # 1.96459
+kurtosis(d80_99$acousticness) # 2.430211
+kurtosis(d00_09$acousticness) # 2.818377
+kurtosis(d10_20$acousticness) # 3.0802
+
+
+
+
 
