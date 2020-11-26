@@ -5,7 +5,7 @@ setwd("~/Documents/statistics-project-spotify/data")
 raw_data = read.csv('spotify_data.csv')
 dim(raw_data) # # 169909 x 19
 dimnames(raw_data)
-str(raw_data); head(raw_data); View(raw_data)
+str(raw_data); head(raw_data); # View(raw_data)
 
 # from duration_ms to duration_s
 raw_data$duration_ms = round((raw_data$duration_ms/1000), 1)
