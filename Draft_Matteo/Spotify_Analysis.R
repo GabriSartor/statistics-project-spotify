@@ -5,7 +5,7 @@ setwd("~/Documents/statistics-project-spotify/data")
 raw_data = read.csv('spotify_data.csv')
 dim(raw_data) # # 169909 x 19
 dimnames(raw_data)
-str(raw_data); head(raw_data); View(raw_data)
+str(raw_data); head(raw_data); # View(raw_data)
 
 # from duration_ms to duration_s
 raw_data$duration_ms = round((raw_data$duration_ms/1000), 1)
@@ -70,7 +70,33 @@ kurtosis(d80_99$acousticness) # 2.430211
 kurtosis(d00_09$acousticness) # 2.818377
 kurtosis(d10_20$acousticness) # 3.0802
 
+##################################################
 
+# it would be cool have the mean of the variables each year every year plotted with an explanation
+mean_master = aggregate(dataset[, -length(dataset)], list(dataset$year), mean)
+dim(mean_master)
+head(mean_master)
 
+for (i in 2:length(mean_master)) {
+  plot(mean_master[, 1], mean_master[, i], type="l", col="blue", lwd=3, xlab="year", ylab=names(mean_master)[i], main=paste("100 yrs of", names(mean_master)[i]))
+}
+
+#################################################
+
+# first we use the mean, we notice in the output one-time hit artist
+# artist who recently got a hit (how recent is weighted on the 'populatity' variable) a not many more song (low denominator).
+pop_artist = aggregate(raw_data$popularity, list(raw_data$artists), mean)
+sort_pa = pop_artist[order(pop_artist[, 2],decreasing=TRUE),]
+head(sort_pa)
+
+# using the sum, we encounter in the output long time established artist with several evergreen
+# each one with high values of 'populariry'
+pop_artist = aggregate(raw_data$popularity, list(raw_data$artists), sum)
+sort_pa = pop_artist[order(pop_artist[, 2],decreasing=TRUE),]
+head(sort_pa)
+
+# the most popular songs
+pop_songs = raw_data[order(raw_data[, "popularity"], decreasing=TRUE),]
+pop_songs[1:3, "name"]
 
 
