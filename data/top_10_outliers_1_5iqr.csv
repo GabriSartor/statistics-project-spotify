@@ -1,0 +1,11 @@
+"acousticness","artists","danceability","duration_ms","energy","explicit","id","instrumentalness","key","liveness","loudness","mode","name","popularity","release_date","speechiness","tempo","valence","year","duration_s"
+0.0811,"['The Weeknd']",0.664,361027,0.572,0,"2p8IUWQDrpjuFltbdgLOag",0.00604,5,0.121,-6.099,0,"After Hours",84,"2020-03-20",0.0305,108.959,0.143,2020,361
+0.00574,"['Eagles']",0.579,391376,0.508,0,"40riOy7x9W7GXjyGp4pjAv",0.000494,2,0.0575,-9.484,1,"Hotel California - 2013 Remaster",82,"1976-12-08",0.027,147.125,0.609,1976,391.4
+0.382,"['Elton John']",0.414,377093,0.428,0,"2TVxnKdb3tqe1nhQWwwZCO",0.000243,0,0.148,-11.097,1,"Tiny Dancer",80,"1971-11-05",0.0278,145.075,0.282,1971,377.1
+0.0163,"[""Guns N' Roses""]",0.294,536067,0.641,0,"3YRCqOhFifThpSRFJ1VWFM",0.22,11,0.112,-9.316,1,"November Rain",80,"1991-09-17",0.0291,79.759,0.226,1991,536.1
+0.753,"['Dalex', 'Rafa Pabön', 'Sech', 'Lenny Tavárez', 'KHEA', 'Cazzu', 'Feid']",0.688,360960,0.62,1,"7g8YaUQABMal0zWe7a2ijz",5.27e-06,11,0.158,-8.029,0,"Pa Mí - Remix",80,"2019-05-10",0.22,170.018,0.727,2019,361
+0.542,"['Nio Garcia', 'Casper Magico', 'Bad Bunny', 'Darell', 'Ozuna', 'Nicky Jam']",0.903,417920,0.675,1,"3V8UKqhEK5zBkBb6d6ub8i",1.28e-05,11,0.0595,-3.445,0,"Te Boté - Remix",79,"2018-04-13",0.214,96.507,0.442,2018,417.9
+0.58,"['Led Zeppelin']",0.338,482830,0.34,0,"5CQ30WqJwcep0pYcV4AMNc",0.0032,9,0.116,-12.049,0,"Stairway to Heaven - 2012 Remaster",78,"1971-11-08",0.0339,82.433,0.197,1971,482.8
+0.0335,"['The Verve']",0.356,357267,0.917,0,"57iDDD9N9tTWe75x6qhStw",0,9,0.406,-6.006,1,"Bitter Sweet Symphony",78,"1997-09-29",0.0479,171.176,0.518,1997,357.3
+0.397,"['Eminem']",0.708,363521,0.843,1,"6or1bKJiZ06IlK0vFvY75k",0,7,0.799,-2.66,1,"Rap God",77,"2013-11-05",0.314,148.14,0.625,2013,363.5
+0.119,"['Nio Garcia', 'Rauw Alejandro', 'Lenny Tavárez', 'Myke Towers', 'Casper Magico', 'Darell']",0.74,377580,0.83,1,"53uKGbcMjEc2gIWbfmvpdS",1.32e-05,1,0.243,-3.243,1,"Mírame - Remix",76,"2019-07-19",0.153,176.054,0.78,2019,377.6
