@@ -3,11 +3,13 @@ library(ggpubr)
 library(farver)
 library(moments)
 library(dplyr)  
+library(corrplot)
 
 # set wd and import dataset
 setwd("./data")
 # info about the dataset:
 data <- read.csv('spotify_data.csv')
+dim(data)
 
 # from duration_ms to duration_s, added a column
 data$duration_s <- round((data$duration_ms/1000), 1)
@@ -15,10 +17,10 @@ data$duration_s <- round((data$duration_ms/1000), 1)
 ######################
 ## OUTLIER DETECTION##
 ######################
-min(data$duration_s)
-max(data$duration_s)
+min(data$duration_s) # 5 sec
+max(data$duration_s) # 1h30min
 
-mean(data$duration_s)
+mean(data$duration_s) # 3h and more, mean is sensitive to outlier 
 
 sd(data$duration_s)
 # sqrt(var(Density))
@@ -31,7 +33,7 @@ q3 = quantile(data$duration_s, 0.75)
 iqr = IQR(data$duration_s)   # or quantile(Density, 0.75) - quantile(Density, 0.25)
 
 
-length(data$duration_s[which(data$duration_s<q1-1.5*iqr)])   # one inferior outlier
+length(data$duration_s[which(data$duration_s<q1-1.5*iqr)])
 length(data$duration_s[which(data$duration_s>q3+1.5*iqr)])
 
 dim(data)
@@ -48,6 +50,7 @@ hist(eliminated_data_6$popularity,main="Histogram Popularity",ylab="popularity f
 
 #We choose to use 6*iqr since 1.5*iqr eliminates some famous songs
 clean_data<- subset(data, data$duration_s > (q1 - 1.5*iqr) & data$duration_s < (q2+6*iqr))
+dim(clean_data)
 
 ###################
 
