@@ -10,7 +10,7 @@ setwd("./data")
 # info about the dataset:
 data <- read.csv('spotify_data.csv')
 dim(data)
-
+names(data)
 # from duration_ms to duration_s, added a column
 data$duration_s <- round((data$duration_ms/1000), 1)
 
@@ -20,7 +20,7 @@ data$duration_s <- round((data$duration_ms/1000), 1)
 min(data$duration_s) # 5 sec
 max(data$duration_s) # 1h30min
 
-mean(data$duration_s) # 3h and more, mean is sensitive to outlier 
+mean(data$duration_s)
 
 sd(data$duration_s)
 # sqrt(var(Density))

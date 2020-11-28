@@ -16,7 +16,7 @@
 ##################################################
 
 # it would be cool have the mean of the variables each year every year plotted with an explanation
-mean_master = aggregate(dataset[, -length(dataset)], list(dataset$year), mean)
+mean_master = aggregate(dataset_NT[, -length(dataset_NT)], list(dataset_NT$year), mean)
 dim(mean_master)
 head(mean_master)
 

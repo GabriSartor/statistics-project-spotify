@@ -4,13 +4,14 @@
 # - clean_data: contains all 20 variables, all types, outlier cleaned
 # {SUBSET OF clean_data}
 #   - dataset: numerical values ('year' maintained for grouping purposes, even if categorical)
+#   - dataset_NT: clean data without info about the song (title, ID, artist, date ecc..)
 # {SUBSET OF dataset}
 #     - n_dataset: numerical values (popularity included)     --> .sd --> n_dataset.sd (scaled version)
 #     - n_dataset_NP: numerical values (without popularity)   --> .sd --> n_dataset_NP.sd (scaled version)
 
 #################################################
-
 dataset = clean_data[c('year', "acousticness", "danceability", "duration_s", "energy", 'instrumentalness', 'popularity', "liveness", "loudness", "speechiness", "tempo", "valence")]
+dataset_NT = clean_data[c('mode' ,'explicit' ,'key', "acousticness", "danceability", "duration_s", "energy", 'instrumentalness', 'popularity', "liveness", "loudness", "speechiness", "tempo", "valence", 'year')]
 n_dataset = dataset[c("acousticness", "danceability", "duration_s", "energy", 'instrumentalness', 'popularity', "liveness", "loudness", "speechiness", "tempo", "valence")]
 n_dataset_NP = dataset[c("acousticness", "danceability", "duration_s", "energy", 'instrumentalness', "liveness", "loudness", "speechiness", "tempo", "valence")]
 
