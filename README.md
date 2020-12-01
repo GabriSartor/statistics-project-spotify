@@ -3,9 +3,9 @@
 
  Authors:
  - Matteo Canale
+ - Gabriele Sartor
  - Matteo Gatto
  - Federico Pomé
- - Gabriele Sartor
 
  The main proposition of the whole project was to define a stakeholder and to perform a statistical analysis to collect some insigths regarding the stakeholder field for a specific purpose.
  In order to perform the analysis R in RStudio IDE has been used, combined with Excel and Powerpoint to present results.
