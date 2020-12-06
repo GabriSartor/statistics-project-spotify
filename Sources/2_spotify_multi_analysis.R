@@ -1,3 +1,5 @@
+require(plyr)
+
 ###################################
 ######## Statistics project #######
 ## 100 Years of Music on Spotify ##
@@ -25,8 +27,29 @@ clean_data <- subset(data, data$duration_s > (q1 - 1.5*iqr) & data$duration_s < 
 ### END DATASET CLEANING ###
 ############################
 
+time_periods <- c(  1920,1950,1980, 2000, 2010)
+time_periods_labels <- c( "20s-40s", "50s-70s", "80s-90s", "00s", "10s" )
+
+clean_data$time_period <- mapvalues(clean_data$year, 
+                                    from=seq(1921,2020), 
+                                    to=c(replicate(length(seq(1921,1949)), 1920), replicate(length(seq(1950,1979)), 1950),
+                                         replicate(length(seq(1980,1999)), 1980), replicate(length(seq(2000,2009)), 2000),
+                                         replicate(length(seq(2010,2020)), 2010)) )
+
+clean_data$time_period <- as.factor(clean_data$time_period)
+
 n_dataset_NP = clean_data[c("acousticness", "danceability", "energy",  "liveness", "loudness", "speechiness", "tempo", "valence")]
 
+n_dataset_NP_median_time_period = aggregate(n_dataset_NP, list(clean_data$time_period), median)
+n_dataset_NP_mean_time_period = aggregate(n_dataset_NP, list(clean_data$time_period), mean)
+
+library(dplyr)
+
+n_dataset_NP_popularit_time_period = clean_data %>%
+   group_by(time_period) %>%
+   slice(which.max(popularity))
+
+n_dataset_NP_popularit_time_period = n_dataset_NP_popularit_time_period[c("time_period", "acousticness", "danceability", "energy",  "liveness", "loudness", "speechiness", "tempo", "valence")]
 # Multivariate Analysis
 
 #Correlation matrix
@@ -98,3 +121,30 @@ box()
 axis(2,at=0:10/10,labels=0:10/10)
 axis(1,at=1:ncol(n_dataset.sd),labels=1:ncol(n_dataset.sd),las=2)
 
+x11()
+stars(n_dataset_NP_median_time_period[, 2:9], key.loc = c(5, -2),
+      labels = time_periods_labels,
+      full = F,
+      locations = cbind(seq(1,10,2), 1),
+      main = "Music trend charts (Median)",
+      draw.segments = F,
+      col.segments = "#1DB954")
+
+stars(n_dataset_NP_mean_time_period[, 2:9], key.loc = c(5, -2),
+      labels = time_periods_labels,
+      full = F,
+      locations = cbind(seq(1,10,2), 1),
+      main = "Music trend charts (Mean)",
+      draw.segments = F,
+      col.segments = "#1DB954")
+
+stars(n_dataset_NP_popularit_time_period[, 2:9], key.loc = c(5, -2),
+      labels = time_periods_labels,
+      full = F,
+      locations = cbind(seq(1,10,2), 1),
+      main = "Music trend charts (Most popular)",
+      draw.segments = F,
+      col.segments = "#1DB954")
+
+
+library(fmsb)

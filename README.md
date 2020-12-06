@@ -72,7 +72,6 @@
   ### 2) Multivariate analysis
   Correlation matrix has been computed on the dataset with various results. Some variables seem correlated while others are not.
   Because of poor correlations the Principal Component Analysis explains only ~60% of variability with the first 3 components.
-  // To do
 
   ### 3) Trend analysis
   To perform the trend analysis we have increased the granularity of univariate analysis and plotted the mean value of each variable through the years, revealing some nice trends both in the early days of music (1920-1950) and in the last 40 years of music (See the plot in plots/trend).
