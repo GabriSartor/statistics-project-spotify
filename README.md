@@ -44,6 +44,8 @@
  - What are the features that changed the most in music?
  - What are some evergreen features in music?
  - Which are the most popular artists today and in history?
+ 
+ Final presentation can be find in the root folder of this repository.
 
  ## Analysis (See R scripts in Sources folder)
  Mainly three type of analysis have been performed:
